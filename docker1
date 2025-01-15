@@ -1,0 +1,12 @@
+FROM UBUNTU:latest
+RUN apt-get update && apt-get install -y apache2 zip unzip wget
+WORKDIR /var/www/html
+RUN wget https://www.free-css.com/assets/files/free-css-templates/download/page296/finexo.zip
+RUN unzip finexo.zip
+RUN cp -rvf finexo/*
+RUN rm -rf finexo finexo.zip
+CMD [ "apache2ctl", "-D", "FOREGROUND"]
+EXPOSE 80
+
+
+
